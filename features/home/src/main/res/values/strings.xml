@@ -1,0 +1,5 @@
+<resources>
+    <string name="menu_item_statistics">Statystyki</string>
+    <string name="menu_item_debts">Zbiórki</string>
+    <string name="menu_item_debtors">Dłużnicy</string>
+</resources>

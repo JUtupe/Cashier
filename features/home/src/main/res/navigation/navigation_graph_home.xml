@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph_home"
+    app:startDestination="@id/debts">
+
+    <fragment
+        android:id="@+id/debtors"
+        android:name="pl.jutupe.home.DebtorsFragment"
+        android:label="fragment_debtors"
+        tools:layout="@layout/fragment_debtors" />
+    <fragment
+        android:id="@+id/debts"
+        android:name="pl.jutupe.home.DebtsFragment"
+        android:label="fragment_debts"
+        tools:layout="@layout/fragment_debts" >
+        <action
+            android:id="@+id/action_debts_to_debtors"
+            app:destination="@id/debtors" />
+    </fragment>
+    <fragment
+        android:id="@+id/statistics"
+        android:name="pl.jutupe.home.StatisticsFragment"
+        android:label="fragment_statistics"
+        tools:layout="@layout/fragment_statistics" >
+        <action
+            android:id="@+id/action_statistics_to_debts"
+            app:destination="@id/debts" />
+    </fragment>
+</navigation>
