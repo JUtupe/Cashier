@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import kotlinx.android.synthetic.main.activity_home.*
+import pl.jutupe.home.R
 
 class HomeActivity : AppCompatActivity() {
 

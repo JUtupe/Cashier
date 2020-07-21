@@ -1,4 +1,4 @@
-package pl.jutupe.base.util
+package pl.jutupe.base
 
 import java.lang.ref.WeakReference
 import kotlin.reflect.KProperty

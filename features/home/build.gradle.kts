@@ -2,7 +2,7 @@ import dependencies.AndroidLibraries
 
 plugins {
     id("common-android-library")
-    id("kotlin-android")
+    kotlin("kapt")
 }
 
 dependencies {
@@ -15,4 +15,6 @@ dependencies {
     implementation(AndroidLibraries.navigationFragment)
     implementation(AndroidLibraries.navigation)
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+
+    kapt(AndroidLibraries.databinding)
 }

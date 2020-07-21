@@ -28,6 +28,10 @@ object Libraries {
     const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.10"
     const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.3.0"
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
+
+    const val room = "androidx.room:room-runtime:2.2.5"
+    const val roomCompiler = "androidx.room:room-compiler:2.2.5"
+    const val roomRxJava = "androidx.room:room-rxjava2:2.2.5"
 }
 
 object AndroidLibraries {

@@ -25,6 +25,7 @@ class AndroidDynamicFeaturePlugin : Plugin<Project> {
             apply("com.android.dynamic-feature")
             apply("kotlin-android")
             apply("kotlin-android-extensions")
+            apply("kotlin-kapt")
         }
     }
 
