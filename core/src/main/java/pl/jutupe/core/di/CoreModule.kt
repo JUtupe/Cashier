@@ -8,10 +8,9 @@ import pl.jutupe.core.repository.local.CashierDatabase
 
 val coreModule = module {
     single {
-        Room.databaseBuilder(
-            androidContext(),
-            CashierDatabase::class.java, "cashier-database"
-        ).build()
+        Room.databaseBuilder(androidContext(), CashierDatabase::class.java, "cashier-database")
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     single { get<CashierDatabase>().debtDao() }

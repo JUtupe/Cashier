@@ -7,9 +7,9 @@ plugins {
 }
 
 dependencies {
-    implementation(Libraries.rxJava)
     implementation(Libraries.room)
-    implementation(Libraries.roomRxJava)
+    implementation(Libraries.roomKtx)
+    implementation(Libraries.coroutines)
 
     kapt(Libraries.roomCompiler)
 }

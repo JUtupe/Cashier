@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "debtors")
 internal data class DebtorLocal(
-    @PrimaryKey var debtorId: Int,
+    @PrimaryKey(autoGenerate = true) var debtorId: Int,
     var firstName: String,
     var lastName: String
 )

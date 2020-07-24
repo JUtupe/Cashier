@@ -1,18 +1,17 @@
 package pl.jutupe.core.repository.local.dao
 
 import androidx.room.*
-import io.reactivex.Completable
-import io.reactivex.Observable
+import kotlinx.coroutines.flow.Flow
 import pl.jutupe.core.repository.local.entity.PaymentLocal
 
 @Dao
 internal interface PaymentDao {
     @Query("SELECT * FROM payments")
-    fun getAll(): Observable<List<PaymentLocal>>
+    fun getAll(): Flow<List<PaymentLocal>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(payments: List<PaymentLocal>): Completable
+    suspend fun insertAll(payments: List<PaymentLocal>)
 
     @Delete
-    fun deleteAll(payments: List<PaymentLocal>): Completable
+    suspend fun deleteAll(payments: List<PaymentLocal>)
 }

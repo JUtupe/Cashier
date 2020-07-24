@@ -1,8 +1,7 @@
 package pl.jutupe.core.repository.local.dao
 
 import androidx.room.*
-import io.reactivex.Completable
-import io.reactivex.Observable
+import kotlinx.coroutines.flow.Flow
 import pl.jutupe.core.repository.local.dao.model.GroupWithDebtors
 import pl.jutupe.core.repository.local.entity.GroupLocal
 
@@ -10,12 +9,11 @@ import pl.jutupe.core.repository.local.entity.GroupLocal
 internal interface GroupDao {
     @Transaction
     @Query("SELECT * FROM groups")
-
-    fun getGroupWithDebtors(): Observable<List<GroupWithDebtors>>
+    fun getGroupWithDebtors(): Flow<List<GroupWithDebtors>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(groups: List<GroupLocal>): Completable
+    suspend fun insertAll(groups: List<GroupLocal>)
 
     @Delete
-    fun deleteAll(groups: List<GroupLocal>): Completable
+    suspend fun deleteAll(groups: List<GroupLocal>)
 }

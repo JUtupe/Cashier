@@ -1,4 +1,4 @@
-import dependencies.AndroidLibraries
+import dependencies.*
 
 plugins {
     id("common-android-library")
@@ -7,6 +7,7 @@ plugins {
 
 dependencies {
     implementation(project(":commons:base"))
+    implementation(project(":core"))
 
     implementation(AndroidLibraries.appCompat)
     implementation(AndroidLibraries.constraintLayout)
@@ -15,6 +16,9 @@ dependencies {
     implementation(AndroidLibraries.navigationFragment)
     implementation(AndroidLibraries.navigation)
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+
+    implementation(Libraries.coroutines)
+    implementation(Libraries.coroutinesAndroid)
 
     kapt(AndroidLibraries.databinding)
 }

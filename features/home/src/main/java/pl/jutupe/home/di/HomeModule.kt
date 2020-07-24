@@ -7,7 +7,7 @@ import pl.jutupe.home.debts.DebtsViewModel
 import pl.jutupe.home.statistics.StatisticsViewModel
 
 val homeModule = module {
-    viewModel { DebtorsViewModel() }
+    viewModel { DebtorsViewModel(get()) }
     viewModel { DebtsViewModel() }
     viewModel { StatisticsViewModel() }
 }

@@ -6,7 +6,7 @@ import java.util.Date
 
 @Entity(tableName = "debts")
 internal data class DebtLocal(
-    @PrimaryKey var debtId: Int,
+    @PrimaryKey(autoGenerate = true) var debtId: Int,
     var name: String,
     var amount: Int,
     var deadline: Date

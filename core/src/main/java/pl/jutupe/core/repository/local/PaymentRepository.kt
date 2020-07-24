@@ -1,7 +1,7 @@
 package pl.jutupe.core.repository.local
 
-import io.reactivex.Completable
-import io.reactivex.Observable
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import pl.jutupe.core.model.Payment
 import pl.jutupe.core.repository.local.dao.PaymentDao
 import pl.jutupe.core.repository.local.entity.PaymentLocal
@@ -10,14 +10,14 @@ class PaymentRepository internal constructor(
     private val paymentDao: PaymentDao
 ) {
 
-    fun getAll(): Observable<List<Payment>> =
+    fun getAll(): Flow<List<Payment>> =
         paymentDao.getAll()
             .map { it.map { it.toPayment() } }
 
-    fun insertAll(payments: List<Payment>): Completable =
+    suspend fun insertAll(payments: List<Payment>) =
         paymentDao.insertAll(payments.map { it.toPaymentLocal() })
 
-    fun deleteAll(payments: List<Payment>): Completable =
+    suspend fun deleteAll(payments: List<Payment>) =
         paymentDao.deleteAll(payments.map { it.toPaymentLocal() })
 
     internal fun PaymentLocal.toPayment(): Payment =

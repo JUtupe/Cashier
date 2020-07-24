@@ -25,13 +25,12 @@ object Libraries {
     const val koin = "org.koin:koin-android:2.0.1"
     const val koinViewModel = "org.koin:koin-android-viewmodel:2.0.1"
 
-    const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.10"
-    const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.3.0"
-    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8"
+    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8"
 
     const val room = "androidx.room:room-runtime:2.2.5"
     const val roomCompiler = "androidx.room:room-compiler:2.2.5"
-    const val roomRxJava = "androidx.room:room-rxjava2:2.2.5"
+    const val roomKtx = "androidx.room:room-ktx:2.2.5"
 }
 
 object AndroidLibraries {
@@ -45,6 +44,7 @@ object AndroidLibraries {
     const val safeArgsPlugin = "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0"
 
     const val databinding = "androidx.databinding:databinding-compiler:4.0.1"
+
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:2.2.0-alpha03"
     const val navigation = "androidx.navigation:navigation-ui-ktx:2.2.0-alpha03"
 }

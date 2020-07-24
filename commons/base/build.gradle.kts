@@ -9,7 +9,10 @@ plugins {
 
 dependencies {
     implementation(AndroidLibraries.appCompat)
-    implementation(Libraries.rxJava)
+    implementation(AndroidLibraries.recyclerview)
+
+    //implementation(Libraries.coroutines)
+    //implementation(Libraries.coroutinesAndroid)
 
     kapt(AndroidLibraries.databinding)
 }

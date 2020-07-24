@@ -1,7 +1,7 @@
 package pl.jutupe.core.repository.local
 
-import io.reactivex.Completable
-import io.reactivex.Observable
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import pl.jutupe.core.model.Group
 import pl.jutupe.core.repository.local.dao.GroupDao
 import pl.jutupe.core.repository.local.dao.model.GroupWithDebtors
@@ -12,14 +12,14 @@ class GroupRepository internal constructor(
     private val debtorRepository: DebtorRepository
 ) {
 
-    fun getAll(): Observable<List<Group>> =
+    fun getAll(): Flow<List<Group>> =
         groupDao.getGroupWithDebtors()
             .map { it.map { it.toGroup() } }
 
-    fun insertAll(groups: List<Group>): Completable =
+    suspend fun insertAll(groups: List<Group>) =
         groupDao.insertAll(groups.map { it.toGroupLocal() })
 
-    fun deleteAll(groups: List<Group>): Completable =
+    suspend fun deleteAll(groups: List<Group>) =
         groupDao.deleteAll(groups.map { it.toGroupLocal() })
 
     internal fun Group.toGroupLocal(): GroupLocal =

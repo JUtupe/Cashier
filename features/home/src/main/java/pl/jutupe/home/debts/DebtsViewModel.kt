@@ -7,4 +7,8 @@ class DebtsViewModel : BaseViewModel<DebtsNavigator>() {
     fun loadDebts() {
 
     }
+
+    fun onAddDebtClicked() {
+
+    }
 }
