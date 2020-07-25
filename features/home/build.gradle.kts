@@ -9,16 +9,16 @@ dependencies {
     implementation(project(":commons:base"))
     implementation(project(":core"))
 
-    implementation(AndroidLibraries.appCompat)
-    implementation(AndroidLibraries.constraintLayout)
-    implementation(AndroidLibraries.material)
+    implementation(Libraries.appCompat)
+    implementation(Libraries.constraintLayout)
+    implementation(Libraries.material)
 
-    implementation(AndroidLibraries.navigationFragment)
-    implementation(AndroidLibraries.navigation)
+    implementation(Libraries.navigationFragment)
+    implementation(Libraries.navigation)
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     implementation(Libraries.coroutines)
     implementation(Libraries.coroutinesAndroid)
 
-    kapt(AndroidLibraries.databinding)
+    kapt(Libraries.databinding)
 }

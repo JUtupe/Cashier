@@ -7,6 +7,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 import dependencies.*
 
+@Suppress("unused")
 class AndroidLibraryPlugin : Plugin<Project> {
 
     private val Project.android: BaseExtension
@@ -28,13 +29,14 @@ class AndroidLibraryPlugin : Plugin<Project> {
         }
     }
 
+    @Suppress("UnstableApiUsage")
     private fun Project.androidConfig() {
         android.run {
-            compileSdkVersion(Versions.compileSdk)
+            compileSdkVersion(Releases.compileSdk)
 
             defaultConfig {
-                minSdkVersion(Versions.minSdk)
-                targetSdkVersion(Versions.targetSdk)
+                minSdkVersion(Releases.minSdk)
+                targetSdkVersion(Releases.targetSdk)
 
                 versionCode = Releases.versionCode
                 versionName = Releases.versionName
@@ -54,7 +56,7 @@ class AndroidLibraryPlugin : Plugin<Project> {
 
     private fun Project.dependenciesConfig() {
         dependencies {
-            implementation(KotlinLibraries.kotlin)
+            implementation(Libraries.kotlin)
             implementation(Libraries.timber)
 
             implementation(Libraries.koin)

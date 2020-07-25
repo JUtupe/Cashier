@@ -1,8 +1,4 @@
-import dependencies.AndroidLibraries
-import dependencies.ApplicationId
-import dependencies.Versions
 import dependencies.Libraries
-import dependencies.KotlinLibraries
 import dependencies.Releases
 
 plugins {
@@ -12,13 +8,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Versions.compileSdk)
+    compileSdkVersion(Releases.compileSdk)
 
     defaultConfig {
-        applicationId = ApplicationId.id
+        applicationId = Releases.applicationId
 
-        minSdkVersion(Versions.minSdk)
-        targetSdkVersion(Versions.targetSdk)
+        minSdkVersion(Releases.minSdk)
+        targetSdkVersion(Releases.targetSdk)
 
         versionCode = Releases.versionCode
         versionName = Releases.versionName
@@ -38,12 +34,12 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(KotlinLibraries.kotlin)
+    implementation(Libraries.kotlin)
 
     implementation(project(":core"))
     implementation(project(":features:home"))
 
-    implementation(AndroidLibraries.appCompat)
+    implementation(Libraries.appCompat)
 
     implementation(Libraries.timber)
     implementation(Libraries.koin)

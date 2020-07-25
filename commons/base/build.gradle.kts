@@ -1,4 +1,3 @@
-import dependencies.AndroidLibraries
 import dependencies.Libraries
 import extensions.kapt
 
@@ -8,11 +7,11 @@ plugins {
 }
 
 dependencies {
-    implementation(AndroidLibraries.appCompat)
-    implementation(AndroidLibraries.recyclerview)
+    implementation(Libraries.appCompat)
+    implementation(Libraries.recyclerview)
 
     //implementation(Libraries.coroutines)
     //implementation(Libraries.coroutinesAndroid)
 
-    kapt(AndroidLibraries.databinding)
+    kapt(Libraries.databinding)
 }
