@@ -1,5 +1,22 @@
 <resources>
+    <string name="activity_name_create_debtor">Tworzenie dłużnika</string>
+    <string name="activity_name_create_debt">Tworzenie zbiórki</string>
+    <string name="activity_name_create_group">Tworzenie grupy</string>
+
     <string name="menu_item_statistics">Statystyki</string>
     <string name="menu_item_debts">Zbiórki</string>
     <string name="menu_item_debtors">Dłużnicy</string>
+    <string name="menu_item_groups">Grupy</string>
+
+    <string name="menu_item_create">Stwórz</string>
+
+    <string name="input_hint_first_name">Imię</string>
+    <string name="input_hint_last_name">Nazwisko</string>
+    <string name="input_hint_group_name">Nazwa grupy</string>
+
+    <string name="error_invalid_first_name">Niepoprawne imię</string>
+    <string name="error_invalid_last_name">Niepoprawne nazwisko</string>
+
+    <string name="information_debtor_created">Dłużnik został stworzony</string>
+    <string name="information_debt_created">Zbiórka została stworzona</string>
 </resources>

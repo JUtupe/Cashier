@@ -2,19 +2,12 @@ package pl.jutupe.home.debtors.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import pl.jutupe.base.adapter.BindableAdapter
-import pl.jutupe.core.model.Debtor
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
+import pl.jutupe.core.repository.entity.Debtor
 import pl.jutupe.home.databinding.ItemDebtorBinding
 
-class DebtorAdapter : RecyclerView.Adapter<DebtorViewHolder>(), BindableAdapter<Debtor> {
-
-    var adapterItems = listOf<Debtor>()
-
-    override fun setItems(items: List<Debtor>) {
-        adapterItems = items
-        notifyDataSetChanged()
-    }
+class DebtorAdapter : PagingDataAdapter<Debtor, DebtorViewHolder>(DEBTOR_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DebtorViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -22,9 +15,19 @@ class DebtorAdapter : RecyclerView.Adapter<DebtorViewHolder>(), BindableAdapter<
         return DebtorViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = adapterItems.size
-
     override fun onBindViewHolder(holder: DebtorViewHolder, position: Int) {
-        holder.bind(adapterItems[position])
+        getItem(position)?.let {
+            holder.bind(it)
+        }
+    }
+
+    companion object {
+        val DEBTOR_COMPARATOR = object : DiffUtil.ItemCallback<Debtor>() {
+            override fun areItemsTheSame(oldItem: Debtor, newItem: Debtor): Boolean =
+                oldItem.debtorId == newItem.debtorId
+
+            override fun areContentsTheSame(oldItem: Debtor, newItem: Debtor): Boolean =
+                oldItem == newItem
+        }
     }
 }

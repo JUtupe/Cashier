@@ -20,4 +20,9 @@
         android:name="pl.jutupe.home.statistics.StatisticsFragment"
         android:label="fragment_statistics"
         tools:layout="@layout/fragment_statistics" />
+    <fragment
+        android:id="@+id/groups"
+        android:name="pl.jutupe.home.groups.GroupsFragment"
+        android:label="fragment_groups"
+        tools:layout="@layout/fragment_groups" />
 </navigation>

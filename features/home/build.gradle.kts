@@ -13,9 +13,11 @@ dependencies {
     implementation(Libraries.constraintLayout)
     implementation(Libraries.material)
 
+    implementation(Libraries.paging)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+
     implementation(Libraries.navigationFragment)
     implementation(Libraries.navigation)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     implementation(Libraries.coroutines)
     implementation(Libraries.coroutinesAndroid)

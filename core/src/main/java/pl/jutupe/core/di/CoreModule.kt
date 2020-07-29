@@ -3,8 +3,7 @@ package pl.jutupe.core.di
 import androidx.room.Room
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
-import pl.jutupe.core.repository.local.*
-import pl.jutupe.core.repository.local.CashierDatabase
+import pl.jutupe.core.repository.*
 
 val coreModule = module {
     single {
@@ -17,6 +16,7 @@ val coreModule = module {
     single { get<CashierDatabase>().debtorDao() }
     single { get<CashierDatabase>().groupDao() }
     single { get<CashierDatabase>().paymentDao() }
+    single { get<CashierDatabase>().debtorGroupCrossRefDao() }
 
     single { DebtorRepository(get()) }
     single { DebtRepository(get()) }

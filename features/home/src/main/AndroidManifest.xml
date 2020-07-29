@@ -10,6 +10,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".createDebtor.CreateDebtorActivity"
+            android:label="@string/activity_name_create_debtor"
+            android:parentActivityName=".HomeActivity">
+            <intent-filter>
+                <action android:name="pl.jutupe.cashier.action.create.debtor" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".createDebt.CreateDebtActivity"
+            android:label="@string/activity_name_create_debt"
+            android:parentActivityName=".HomeActivity">
+            <intent-filter>
+                <action android:name="pl.jutupe.cashier.action.create.debt" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".createGroup.CreateGroupActivity"
+            android:label="@string/activity_name_create_group"
+            android:parentActivityName=".HomeActivity">
+            <intent-filter>
+                <action android:name="pl.jutupe.cashier.action.create.group" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

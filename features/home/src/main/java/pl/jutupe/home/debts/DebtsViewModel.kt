@@ -9,6 +9,6 @@ class DebtsViewModel : BaseViewModel<DebtsNavigator>() {
     }
 
     fun onAddDebtClicked() {
-
+        navigator?.openCreateDebtView()
     }
 }

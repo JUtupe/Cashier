@@ -3,6 +3,7 @@ package pl.jutupe.home.debtors
 import android.os.Bundle
 import android.view.View
 import org.koin.android.viewmodel.ext.android.viewModel
+import pl.jutupe.base.NavActions
 import pl.jutupe.base.view.BaseFragment
 import pl.jutupe.home.BR
 import pl.jutupe.home.R
@@ -25,5 +26,11 @@ class DebtorsFragment : BaseFragment<FragmentDebtorsBinding, DebtorsViewModel>()
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.loadDebtors()
+    }
+
+    override fun openCreateDebtorView() {
+        context?.let {
+            startActivity(NavActions.actionCreateDebtor(it))
+        }
     }
 }

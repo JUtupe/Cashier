@@ -11,5 +11,7 @@ dependencies {
     implementation(Libraries.roomKtx)
     implementation(Libraries.coroutines)
 
+    implementation(Libraries.paging)
+
     kapt(Libraries.roomCompiler)
 }
