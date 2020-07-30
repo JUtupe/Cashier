@@ -6,6 +6,9 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 import dependencies.*
+import org.gradle.api.JavaVersion
+import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 @Suppress("unused")
 class AndroidDynamicFeaturePlugin : Plugin<Project> {
@@ -52,6 +55,17 @@ class AndroidDynamicFeaturePlugin : Plugin<Project> {
             }
 
             buildFeatures.dataBinding = true
+
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_1_8
+                targetCompatibility = JavaVersion.VERSION_1_8
+            }
+        }
+
+        tasks.withType<KotlinCompile>() {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
         }
     }
 

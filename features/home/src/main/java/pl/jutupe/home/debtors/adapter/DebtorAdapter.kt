@@ -16,9 +16,7 @@ class DebtorAdapter : PagingDataAdapter<Debtor, DebtorViewHolder>(DEBTOR_COMPARA
     }
 
     override fun onBindViewHolder(holder: DebtorViewHolder, position: Int) {
-        getItem(position)?.let {
-            holder.bind(it)
-        }
+        holder.bind(getItem(position))
     }
 
     companion object {

@@ -8,7 +8,8 @@ class DebtorViewHolder(
     private val binding: ItemDebtorBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(debtor: Debtor) {
+    fun bind(debtor: Debtor?) {
+        //todo handle null as placeholder
         binding.debtor = debtor
         binding.executePendingBindings()
     }

@@ -14,7 +14,7 @@ object Releases {
 private object Versions {
     const val kotlin = "1.3.72"
     const val coroutines = "1.3.8"
-    const val room = "2.2.5"
+    const val room = "2.3.0-alpha01"
     const val navigation = "2.3.0"
     const val timber = "4.7.1"
     const val koin = "2.1.5"

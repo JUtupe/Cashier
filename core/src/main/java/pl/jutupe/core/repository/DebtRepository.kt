@@ -1,14 +1,14 @@
 package pl.jutupe.core.repository
 
-import kotlinx.coroutines.flow.Flow
+import androidx.paging.PagingSource
 import pl.jutupe.core.repository.dao.DebtDao
 import pl.jutupe.core.repository.entity.Debt
 
-internal class DebtRepository(
+class DebtRepository internal constructor(
     private val debtDao: DebtDao
 ) {
-    fun getAll(): Flow<List<Debt>> =
-        debtDao.getAll()
+    fun getAllPaging(): PagingSource<Int, Debt> =
+        debtDao.getAllPaging()
 
     suspend fun insertAll(debts: List<Debt>) =
         debtDao.insertAll(debts)
