@@ -1,17 +1,18 @@
 package pl.jutupe.home.createGroup
 
 import androidx.lifecycle.MutableLiveData
-import pl.jutupe.base.view.BaseViewModel
+import androidx.lifecycle.ViewModel
+import pl.jutupe.base.SingleLiveData
 
-class CreateGroupViewModel : BaseViewModel<CreateGroupNavigator>() {
+class CreateGroupViewModel : ViewModel() {
 
     val groupName = MutableLiveData<String>()
-
-    fun loadDebtors() {
-
-    }
+    val events = SingleLiveData<CreateGroupViewEvent>()
 
     fun onCreateButtonClicked() {
+        //todo
 
+        events.value = CreateGroupViewEvent.ShowGroupCreatedInformation
+        events.value = CreateGroupViewEvent.NavigateBack
     }
 }

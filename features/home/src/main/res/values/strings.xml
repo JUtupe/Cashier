@@ -19,4 +19,5 @@
 
     <string name="information_debtor_created">Dłużnik został stworzony</string>
     <string name="information_debt_created">Zbiórka została stworzona</string>
+    <string name="information_group_created">Grupa została stworzona</string>
 </resources>

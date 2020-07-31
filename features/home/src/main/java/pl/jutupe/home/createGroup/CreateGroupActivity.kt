@@ -3,24 +3,27 @@ package pl.jutupe.home.createGroup
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.lifecycle.observe
 import org.koin.android.viewmodel.ext.android.viewModel
 import pl.jutupe.base.view.BaseActivity
-import pl.jutupe.home.BR
 import pl.jutupe.home.R
 import pl.jutupe.home.databinding.ActivityCreateGroupBinding
 
-class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroupViewModel>(),
-    CreateGroupNavigator {
+class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroupViewModel>(
+    layoutId = R.layout.activity_create_group
+) {
 
     override val viewModel by viewModel<CreateGroupViewModel>()
-    override fun getLayoutId(): Int = R.layout.activity_create_group
-    override fun getBindingVariable(): Int = BR.viewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.navigator = this
-        viewModel.loadDebtors()
+        viewModel.events.observe(this, this::onViewEvent)
+    }
+
+    override fun onInitDataBinding() {
+        binding.viewModel = viewModel
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -34,7 +37,12 @@ class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroup
             else -> super.onOptionsItemSelected(item)
         }
 
-    override fun navigateBack() {
-        onNavigateUp()
+    private fun onViewEvent(event: CreateGroupViewEvent) {
+        when(event) {
+            is CreateGroupViewEvent.NavigateBack ->
+                onNavigateUp()
+            is CreateGroupViewEvent.ShowGroupCreatedInformation ->
+                Toast.makeText(this, R.string.information_group_created, Toast.LENGTH_SHORT).show()
+        }
     }
 }

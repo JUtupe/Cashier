@@ -1,10 +1,16 @@
 package pl.jutupe.home.createDebt
 
-import pl.jutupe.base.view.BaseViewModel
+import androidx.lifecycle.ViewModel
+import pl.jutupe.base.SingleLiveData
 
-class CreateDebtViewModel : BaseViewModel<CreateDebtNavigator>() {
+class CreateDebtViewModel : ViewModel() {
+
+    val events = SingleLiveData<CreateDebtViewEvent>()
 
     fun onCreateButtonClicked() {
+        //todo
 
+        events.value = CreateDebtViewEvent.ShowDebtCreatedInformation
+        events.value = CreateDebtViewEvent.NavigateUp
     }
 }

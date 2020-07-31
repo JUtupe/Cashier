@@ -1,10 +1,8 @@
 package pl.jutupe.home.statistics
 
-import pl.jutupe.base.view.BaseViewModel
+import androidx.lifecycle.ViewModel
 
-class StatisticsViewModel : BaseViewModel<StatisticsNavigator>() {
+class StatisticsViewModel : ViewModel() {
 
-    fun loadStatistics() {
 
-    }
 }

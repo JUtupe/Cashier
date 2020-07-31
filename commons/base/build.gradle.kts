@@ -7,11 +7,7 @@ plugins {
 }
 
 dependencies {
-    implementation(Libraries.appCompat)
-    implementation(Libraries.recyclerview)
-
-    //implementation(Libraries.coroutines)
-    //implementation(Libraries.coroutinesAndroid)
+    //implementation(Libraries.appCompat)
 
     kapt(Libraries.databinding)
 }

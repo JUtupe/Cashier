@@ -4,23 +4,26 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.lifecycle.observe
+import org.koin.android.viewmodel.ext.android.viewModel
 import pl.jutupe.base.view.BaseActivity
 import pl.jutupe.home.R
-import pl.jutupe.home.BR
-import org.koin.android.viewmodel.ext.android.viewModel
 import pl.jutupe.home.databinding.ActivityCreateDebtBinding
 
-class CreateDebtActivity : BaseActivity<ActivityCreateDebtBinding, CreateDebtViewModel>(),
-    CreateDebtNavigator {
+class CreateDebtActivity : BaseActivity<ActivityCreateDebtBinding, CreateDebtViewModel>(
+    layoutId = R.layout.activity_create_debt
+) {
 
     override val viewModel by viewModel<CreateDebtViewModel>()
-    override fun getLayoutId(): Int = R.layout.activity_create_debt
-    override fun getBindingVariable(): Int = BR.viewModel
+
+    override fun onInitDataBinding() {
+        binding.viewModel = viewModel
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.navigator = this
+        viewModel.events.observe(this, this::onViewEvent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -34,11 +37,12 @@ class CreateDebtActivity : BaseActivity<ActivityCreateDebtBinding, CreateDebtVie
             else -> super.onOptionsItemSelected(item)
         }
 
-    override fun showDebtCreatedText() {
-        Toast.makeText(this, R.string.information_debt_created, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun navigateBack() {
-        onNavigateUp()
+    private fun onViewEvent(event: CreateDebtViewEvent) {
+        when(event) {
+            is CreateDebtViewEvent.NavigateUp ->
+                onNavigateUp()
+            is CreateDebtViewEvent.ShowDebtCreatedInformation ->
+                Toast.makeText(this, R.string.information_debt_created, Toast.LENGTH_SHORT).show()
+        }
     }
 }

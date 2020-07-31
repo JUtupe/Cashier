@@ -5,28 +5,24 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModel
 
-abstract class BaseActivity<B : ViewDataBinding, V : BaseViewModel<*>>
-    : AppCompatActivity() {
+abstract class BaseActivity<B : ViewDataBinding, V : ViewModel>(
+    @LayoutRes
+    private val layoutId: Int
+) : AppCompatActivity() {
 
     lateinit var binding: B
-
     abstract val viewModel: V
 
-    @LayoutRes
-    abstract fun getLayoutId(): Int
-
-    abstract fun getBindingVariable(): Int
+    abstract fun onInitDataBinding()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        performDataBinding()
-    }
 
-    private fun performDataBinding() {
-        binding = DataBindingUtil.setContentView(this, getLayoutId())
-        binding.setVariable(getBindingVariable(), viewModel)
+        binding = DataBindingUtil.setContentView(this, layoutId)
         binding.lifecycleOwner = this
-        binding.executePendingBindings()
+
+        onInitDataBinding()
     }
 }

@@ -4,24 +4,27 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.lifecycle.observe
 import kotlinx.android.synthetic.main.activity_create_debtor.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import pl.jutupe.base.view.BaseActivity
-import pl.jutupe.home.BR
 import pl.jutupe.home.R
 import pl.jutupe.home.databinding.ActivityCreateDebtorBinding
 
-class CreateDebtorActivity : BaseActivity<ActivityCreateDebtorBinding, CreateDebtorViewModel>(),
-    CreateDebtorNavigator {
+class CreateDebtorActivity : BaseActivity<ActivityCreateDebtorBinding, CreateDebtorViewModel>(
+    layoutId = R.layout.activity_create_debtor
+) {
 
     override val viewModel by viewModel<CreateDebtorViewModel>()
-    override fun getLayoutId(): Int = R.layout.activity_create_debtor
-    override fun getBindingVariable(): Int = BR.viewModel
+
+    override fun onInitDataBinding() {
+        binding.viewModel = viewModel
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.navigator = this
+        viewModel.events.observe(this, this::onViewEvent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -35,19 +38,17 @@ class CreateDebtorActivity : BaseActivity<ActivityCreateDebtorBinding, CreateDeb
             else -> super.onOptionsItemSelected(item)
         }
 
-    override fun showFirstNameError() {
-        input_first_name.error = getString(R.string.error_invalid_first_name)
-    }
+    private fun onViewEvent(event: CreateDebtorViewEvent) {
+        when(event) {
+            is CreateDebtorViewEvent.NavigateBack ->
+                onNavigateUp()
+            is CreateDebtorViewEvent.ShowFirstNameError ->
+                binding.inputFirstName.error = getString(R.string.error_invalid_first_name)
+            is CreateDebtorViewEvent.ShowLastNameError ->
+                binding.inputLastName.error = getString(R.string.error_invalid_last_name)
+            is CreateDebtorViewEvent.ShowDebtorCreatedInformation ->
+                Toast.makeText(this, R.string.information_debtor_created, Toast.LENGTH_SHORT).show()
+        }
 
-    override fun showLastNameError() {
-        input_last_name.error = getString(R.string.error_invalid_last_name)
-    }
-
-    override fun showDebtorCreatedText() {
-        Toast.makeText(this, R.string.information_debtor_created, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun navigateBack() {
-        onNavigateUp()
     }
 }
