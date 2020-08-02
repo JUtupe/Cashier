@@ -10,6 +10,9 @@ internal interface DebtorDao {
     fun getDebtorsPaged(): PagingSource<Int, Debtor>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(debtor: Debtor): Long
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(debtors: List<Debtor>)
 
     @Delete

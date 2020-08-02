@@ -12,6 +12,9 @@
     <string name="input_hint_first_name">Imię</string>
     <string name="input_hint_last_name">Nazwisko</string>
     <string name="input_hint_group_name">Nazwa grupy</string>
+    <string name="input_hint_phone_number">Numer telefonu</string>
+
+    <string name="label_optional_fields">Pola opcjonalne</string>
 
     <string name="error_something_went_wrong">Coś poszło nie tak</string>
     <string name="error_invalid_first_name">Niepoprawne imię</string>

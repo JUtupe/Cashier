@@ -10,6 +10,9 @@ class DebtorRepository internal constructor(
     fun getAllPaging(): PagingSource<Int, Debtor> =
         debtorDao.getDebtorsPaged()
 
+    suspend fun insert(debtor: Debtor) =
+        debtorDao.insert(debtor)
+
     suspend fun insertAll(debtors: List<Debtor>) =
         debtorDao.insertAll(debtors)
 

@@ -15,21 +15,23 @@ class CreateDebtorViewModel(
 
     val firstName = MutableLiveData<String>()
     val lastName = MutableLiveData<String>()
+    val phoneNumber = MutableLiveData<String>()
     val events = SingleLiveData<CreateDebtorViewEvent>()
 
     fun onCreateButtonClicked() {
         val firstNameString = firstName.value
         val lastNameString = lastName.value
+        val phoneNumberString = phoneNumber.value
 
         if (!assertValidModel(firstNameString, lastNameString)) {
             return
         }
 
         viewModelScope.launch {
-            val debtor = Debtor(0, firstNameString!!, lastNameString!!)
+            val debtor = Debtor(0, firstNameString!!, lastNameString!!, phoneNumberString)
 
             try {
-                debtorRepository.insertAll(listOf(debtor))
+                debtorRepository.insert(debtor)
 
                 events.value = CreateDebtorViewEvent.ShowDebtorCreatedInformation
                 events.value = CreateDebtorViewEvent.NavigateBack

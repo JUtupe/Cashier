@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class Debtor(
     @PrimaryKey(autoGenerate = true) var debtorId: Long,
     var firstName: String,
-    var lastName: String
+    var lastName: String,
+    var phone: String? = null
 )
