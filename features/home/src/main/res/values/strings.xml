@@ -14,8 +14,11 @@
     <string name="input_hint_last_name">Nazwisko</string>
     <string name="input_hint_group_name">Nazwa grupy</string>
 
+    <string name="error_something_went_wrong">Coś poszło nie tak</string>
     <string name="error_invalid_first_name">Niepoprawne imię</string>
     <string name="error_invalid_last_name">Niepoprawne nazwisko</string>
+    <string name="error_invalid_group_name">Niepoprawna nazwa grupy</string>
+    <string name="error_empty_debtors_selection">Nie zaznaczono żadnego dłużnika</string>
 
     <string name="information_debtor_created">Dłużnik został stworzony</string>
     <string name="information_debt_created">Zbiórka została stworzona</string>

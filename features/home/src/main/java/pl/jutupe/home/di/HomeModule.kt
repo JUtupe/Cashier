@@ -5,6 +5,7 @@ import org.koin.dsl.module
 import pl.jutupe.home.createDebt.CreateDebtViewModel
 import pl.jutupe.home.createDebtor.CreateDebtorViewModel
 import pl.jutupe.home.createGroup.CreateGroupViewModel
+import pl.jutupe.home.createGroup.DebtorSelectionTracker
 import pl.jutupe.home.debtors.DebtorsViewModel
 import pl.jutupe.home.debts.DebtsViewModel
 import pl.jutupe.home.groups.GroupsViewModel
@@ -16,7 +17,9 @@ val homeModule = module {
     viewModel { StatisticsViewModel() }
     viewModel { GroupsViewModel(get()) }
 
-    viewModel { CreateGroupViewModel() }
+    factory { DebtorSelectionTracker() }
+
+    viewModel { CreateGroupViewModel(get(), get(), get()) }
     viewModel { CreateDebtorViewModel(get()) }
     viewModel { CreateDebtViewModel() }
 }

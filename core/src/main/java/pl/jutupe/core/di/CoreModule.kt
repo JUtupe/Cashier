@@ -45,7 +45,6 @@ val coreModule = module {
     single { get<CashierDatabase>().debtorDao() }
     single { get<CashierDatabase>().groupDao() }
     single { get<CashierDatabase>().paymentDao() }
-    single { get<CashierDatabase>().debtorGroupCrossRefDao() }
 
     single { DebtorRepository(get()) }
     single { DebtRepository(get()) }

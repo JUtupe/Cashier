@@ -6,7 +6,6 @@ import androidx.room.TypeConverters
 import pl.jutupe.core.repository.converter.DateConverter
 import pl.jutupe.core.repository.dao.DebtDao
 import pl.jutupe.core.repository.dao.DebtorDao
-import pl.jutupe.core.repository.dao.DebtorGroupCrossRefDao
 import pl.jutupe.core.repository.dao.GroupDao
 import pl.jutupe.core.repository.dao.PaymentDao
 import pl.jutupe.core.repository.entity.*
@@ -27,5 +26,4 @@ internal abstract class CashierDatabase : RoomDatabase() {
     abstract fun debtorDao(): DebtorDao
     abstract fun groupDao(): GroupDao
     abstract fun paymentDao(): PaymentDao
-    abstract fun debtorGroupCrossRefDao(): DebtorGroupCrossRefDao
 }

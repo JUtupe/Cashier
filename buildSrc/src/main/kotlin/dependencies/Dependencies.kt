@@ -22,7 +22,6 @@ private object Versions {
     const val databindingCompiler = "4.0.1"
     const val paging = "3.0.0-alpha03"
     const val appCompat = "1.1.0"
-    const val recyclerView = "1.1.0"
     const val material = "1.1.0"
 }
 
@@ -31,7 +30,6 @@ object Libraries {
 
     //android
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
-    const val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     const val material = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val databinding = "androidx.databinding:databinding-compiler:${Versions.databindingCompiler}"

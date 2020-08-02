@@ -48,7 +48,8 @@ class CreateDebtorActivity : BaseActivity<ActivityCreateDebtorBinding, CreateDeb
                 binding.inputLastName.error = getString(R.string.error_invalid_last_name)
             is CreateDebtorViewEvent.ShowDebtorCreatedInformation ->
                 Toast.makeText(this, R.string.information_debtor_created, Toast.LENGTH_SHORT).show()
+            is CreateDebtorViewEvent.ShowCreateDebtorError ->
+                Toast.makeText(this, R.string.error_something_went_wrong, Toast.LENGTH_SHORT).show()
         }
-
     }
 }

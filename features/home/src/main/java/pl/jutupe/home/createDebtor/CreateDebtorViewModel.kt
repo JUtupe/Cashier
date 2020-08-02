@@ -21,7 +21,7 @@ class CreateDebtorViewModel(
         val firstNameString = firstName.value
         val lastNameString = lastName.value
 
-        if (isValidName(firstNameString, lastNameString)) {
+        if (!assertValidModel(firstNameString, lastNameString)) {
             return
         }
 
@@ -34,24 +34,26 @@ class CreateDebtorViewModel(
                 events.value = CreateDebtorViewEvent.ShowDebtorCreatedInformation
                 events.value = CreateDebtorViewEvent.NavigateBack
             } catch (e: Exception) {
-                Timber.e(e, "onAddDebtorClicked error:")
+                Timber.e(e, "insert debtor error:")
+
+                events.value = CreateDebtorViewEvent.ShowCreateDebtorError
             }
         }
     }
 
-    private fun isValidName(firstNameString: String?, lastNameString: String?): Boolean {
-        var isError = false
+    private fun assertValidModel(firstNameString: String?, lastNameString: String?): Boolean {
+        var isValid = true
 
-        if (firstNameString == null) {
+        if (firstNameString.isNullOrBlank()) {
+            isValid = false
             events.value = CreateDebtorViewEvent.ShowFirstNameError
-            isError = true
         }
 
-        if (lastNameString == null) {
+        if (lastNameString.isNullOrBlank()) {
+            isValid = false
             events.value = CreateDebtorViewEvent.ShowLastNameError
-            isError = true
         }
 
-        return isError
+        return isValid
     }
 }

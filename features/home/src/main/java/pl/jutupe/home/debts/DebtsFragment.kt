@@ -33,7 +33,7 @@ class DebtsFragment : BaseFragment<FragmentDebtsBinding, DebtsViewModel>(
 
     override fun onInitDataBinding() {
         binding.viewModel = viewModel
-        binding.recyclerView.adapter =debtAdapter
+        binding.recyclerView.adapter = debtAdapter
     }
 
     private fun onViewEvent(event: DebtsViewEvent) {

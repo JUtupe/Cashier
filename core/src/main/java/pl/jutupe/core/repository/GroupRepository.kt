@@ -9,4 +9,8 @@ class GroupRepository internal constructor(
 ) {
     fun getAllPaging(): PagingSource<Int, Group> =
         groupDao.getAllPaging()
+
+    suspend fun insertGroupWithDebtors(group: Group, debtorIds: List<Int>) {
+        groupDao.insertGroupWithDebtors(group, debtorIds)
+    }
 }
