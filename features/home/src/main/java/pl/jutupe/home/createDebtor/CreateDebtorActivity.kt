@@ -41,7 +41,7 @@ class CreateDebtorActivity : BaseActivity<ActivityCreateDebtorBinding, CreateDeb
     private fun onViewEvent(event: CreateDebtorViewEvent) {
         when(event) {
             is CreateDebtorViewEvent.NavigateBack ->
-                onNavigateUp()
+                finish()
             is CreateDebtorViewEvent.ShowFirstNameError ->
                 binding.inputFirstName.error = getString(R.string.error_invalid_first_name)
             is CreateDebtorViewEvent.ShowLastNameError ->

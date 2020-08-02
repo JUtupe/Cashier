@@ -8,8 +8,8 @@ import java.util.Date
     primaryKeys = ["debtorId", "debtId"]
 )
 data class Payment(
-    val debtorId: Int,
-    val debtId: Int,
+    val debtorId: Long,
+    val debtId: Long,
     var isPaid: Boolean,
     var paidDate: Date
 )

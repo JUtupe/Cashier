@@ -7,6 +7,6 @@ import androidx.room.Entity
     primaryKeys = ["debtorId", "groupId"]
 )
 internal data class DebtorGroupCrossRef(
-    var debtorId: Int,
-    var groupId: Int
+    var debtorId: Long,
+    var groupId: Long
 )

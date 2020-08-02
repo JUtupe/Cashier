@@ -5,9 +5,9 @@ class DebtorSelectionTracker {
     /**
      * List of selected debtor ids
      */
-    private val selection = mutableListOf<Int>()
+    private val selection = mutableListOf<Long>()
 
-    fun onSelected(debtorId: Int, checked: Boolean) {
+    fun onSelected(debtorId: Long, checked: Boolean) {
         if (checked) {
             if(!isSelected(debtorId)) {
                 selection.add(debtorId)
@@ -17,9 +17,9 @@ class DebtorSelectionTracker {
         }
     }
 
-    fun isSelected(debtorId: Int?): Boolean =
+    fun isSelected(debtorId: Long?): Boolean =
         selection.contains(debtorId)
 
-    fun getSelection(): List<Int> =
+    fun getSelection(): List<Long> =
         selection
 }

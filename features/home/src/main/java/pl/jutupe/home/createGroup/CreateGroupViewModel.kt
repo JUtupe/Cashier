@@ -50,7 +50,7 @@ class CreateGroupViewModel(
         }
     }
 
-    private fun assertValidModel(selection: List<Int>, groupNameString: String?): Boolean {
+    private fun assertValidModel(selection: List<Long>, groupNameString: String?): Boolean {
         var isValid = true
 
         if (selection.isEmpty()) {

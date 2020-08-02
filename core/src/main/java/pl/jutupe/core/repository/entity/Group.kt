@@ -5,6 +5,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "groups")
 data class Group(
-    @PrimaryKey(autoGenerate = true) var groupId: Int,
+    @PrimaryKey(autoGenerate = true) var groupId: Long,
     var name: String
 )

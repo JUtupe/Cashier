@@ -10,7 +10,7 @@ class GroupRepository internal constructor(
     fun getAllPaging(): PagingSource<Int, Group> =
         groupDao.getAllPaging()
 
-    suspend fun insertGroupWithDebtors(group: Group, debtorIds: List<Int>) {
+    suspend fun insertGroupWithDebtors(group: Group, debtorIds: List<Long>) {
         groupDao.insertGroupWithDebtors(group, debtorIds)
     }
 }

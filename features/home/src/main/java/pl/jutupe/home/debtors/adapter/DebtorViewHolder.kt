@@ -9,7 +9,6 @@ class DebtorViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(debtor: Debtor?) {
-        //todo handle null as placeholder
         binding.debtor = debtor
         binding.executePendingBindings()
     }

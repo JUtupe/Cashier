@@ -9,7 +9,6 @@ class GroupViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(group: Group?) {
-        //todo handle null as placeholder
         binding.group = group
         binding.executePendingBindings()
     }

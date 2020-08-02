@@ -52,7 +52,7 @@ class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroup
     private fun onViewEvent(event: CreateGroupViewEvent) {
         when(event) {
             is CreateGroupViewEvent.NavigateBack ->
-                onNavigateUp()
+                finish()
             is CreateGroupViewEvent.ShowGroupCreatedInformation ->
                 Toast.makeText(this, R.string.information_group_created, Toast.LENGTH_SHORT).show()
             is CreateGroupViewEvent.ShowEmptySelectionError ->

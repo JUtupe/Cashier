@@ -8,7 +8,7 @@ class SelectableDebtorViewHolder(
     private val binding: ItemSelectableDebtorBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(debtor: Debtor?, isChecked: Boolean, onChecked: (Int, Boolean) -> Unit) {
+    fun bind(debtor: Debtor?, isChecked: Boolean, onChecked: (Long, Boolean) -> Unit) {
         debtor?.let {
             binding.checkbox.setOnCheckedChangeListener { _, checked -> onChecked(it.debtorId, checked) }
         }
