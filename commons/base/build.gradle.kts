@@ -7,7 +7,5 @@ plugins {
 }
 
 dependencies {
-    //implementation(Libraries.appCompat)
-
     kapt(Libraries.databinding)
 }
