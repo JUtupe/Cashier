@@ -37,6 +37,11 @@ class CreateDebtActivity : BaseActivity<ActivityCreateDebtBinding, CreateDebtVie
             else -> super.onOptionsItemSelected(item)
         }
 
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
     private fun onViewEvent(event: CreateDebtViewEvent) {
         when(event) {
             is CreateDebtViewEvent.NavigateUp ->

@@ -9,12 +9,10 @@ import pl.jutupe.home.createGroup.DebtorSelectionTracker
 import pl.jutupe.home.debtors.DebtorsViewModel
 import pl.jutupe.home.debts.DebtsViewModel
 import pl.jutupe.home.groups.GroupsViewModel
-import pl.jutupe.home.statistics.StatisticsViewModel
 
 val homeModule = module {
     viewModel { DebtorsViewModel(get()) }
     viewModel { DebtsViewModel(get()) }
-    viewModel { StatisticsViewModel() }
     viewModel { GroupsViewModel(get()) }
 
     factory { DebtorSelectionTracker() }

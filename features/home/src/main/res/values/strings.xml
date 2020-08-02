@@ -3,7 +3,6 @@
     <string name="activity_name_create_debt">Tworzenie zbiórki</string>
     <string name="activity_name_create_group">Tworzenie grupy</string>
 
-    <string name="menu_item_statistics">Statystyki</string>
     <string name="menu_item_debts">Zbiórki</string>
     <string name="menu_item_debtors">Dłużnicy</string>
     <string name="menu_item_groups">Grupy</string>

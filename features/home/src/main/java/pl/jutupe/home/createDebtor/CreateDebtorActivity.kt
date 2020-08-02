@@ -38,6 +38,11 @@ class CreateDebtorActivity : BaseActivity<ActivityCreateDebtorBinding, CreateDeb
             else -> super.onOptionsItemSelected(item)
         }
 
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
     private fun onViewEvent(event: CreateDebtorViewEvent) {
         when(event) {
             is CreateDebtorViewEvent.NavigateBack ->

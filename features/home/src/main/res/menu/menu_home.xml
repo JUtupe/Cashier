@@ -2,12 +2,6 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/statistics"
-        android:title="@string/menu_item_statistics"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_baseline_bar_chart_24"
-        tools:ignore="AlwaysShowAction" />
 
     <item
         android:id="@+id/debts"

@@ -49,6 +49,11 @@ class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroup
             else -> super.onOptionsItemSelected(item)
         }
 
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
     private fun onViewEvent(event: CreateGroupViewEvent) {
         when(event) {
             is CreateGroupViewEvent.NavigateBack ->
