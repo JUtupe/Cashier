@@ -15,7 +15,7 @@ import timber.log.Timber
 class CreateGroupViewModel(
     private val groupRepository: GroupRepository,
     private val debtorRepository: DebtorRepository,
-    val selectionTracker: DebtorSelectionTracker
+    val selectionTracker: LongSelectionTracker
 ) : ViewModel() {
 
     val groupName = MutableLiveData<String>()

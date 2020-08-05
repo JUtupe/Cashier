@@ -45,15 +45,15 @@ class CreateDebtorActivity : BaseActivity<ActivityCreateDebtorBinding, CreateDeb
 
     private fun onViewEvent(event: CreateDebtorViewEvent) {
         when(event) {
-            is CreateDebtorViewEvent.NavigateBack ->
+            CreateDebtorViewEvent.NavigateBack ->
                 finish()
-            is CreateDebtorViewEvent.ShowFirstNameError ->
+            CreateDebtorViewEvent.ShowFirstNameError ->
                 binding.inputFirstName.error = getString(R.string.error_invalid_first_name)
-            is CreateDebtorViewEvent.ShowLastNameError ->
+            CreateDebtorViewEvent.ShowLastNameError ->
                 binding.inputLastName.error = getString(R.string.error_invalid_last_name)
-            is CreateDebtorViewEvent.ShowDebtorCreatedInformation ->
+            CreateDebtorViewEvent.ShowDebtorCreatedInformation ->
                 Toast.makeText(this, R.string.information_debtor_created, Toast.LENGTH_SHORT).show()
-            is CreateDebtorViewEvent.ShowCreateDebtorError ->
+            CreateDebtorViewEvent.ShowCreateDebtorError ->
                 Toast.makeText(this, R.string.error_something_went_wrong, Toast.LENGTH_SHORT).show()
         }
     }

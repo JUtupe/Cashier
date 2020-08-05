@@ -2,8 +2,10 @@ package pl.jutupe.home.groups
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
+import androidx.paging.LoadState
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.android.viewmodel.ext.android.viewModel
 import pl.jutupe.base.NavActions
@@ -30,11 +32,15 @@ class GroupsFragment : BaseFragment<FragmentGroupsBinding, GroupsViewModel>(
                 groupAdapter.submitData(it)
             }
         }
+        groupAdapter.addLoadStateListener { loadState ->
+            binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
+            binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+        }
     }
 
     override fun onInitDataBinding() {
         binding.viewModel = viewModel
-        binding.recyclerView.adapter = groupAdapter
+        binding.list.adapter = groupAdapter
     }
 
     private fun onViewEvent(event: GroupsViewEvent) {

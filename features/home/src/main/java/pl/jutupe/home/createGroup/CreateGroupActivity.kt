@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
+import androidx.paging.LoadState
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.android.viewmodel.ext.android.viewModel
 import pl.jutupe.base.view.BaseActivity
@@ -31,11 +33,15 @@ class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroup
                 debtorAdapter.submitData(it)
             }
         }
+        debtorAdapter.addLoadStateListener { loadState ->
+            binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
+            binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+        }
     }
 
     override fun onInitDataBinding() {
         binding.viewModel = viewModel
-        binding.recyclerView.adapter = debtorAdapter
+        binding.list.adapter = debtorAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -56,15 +62,15 @@ class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroup
 
     private fun onViewEvent(event: CreateGroupViewEvent) {
         when(event) {
-            is CreateGroupViewEvent.NavigateBack ->
+            CreateGroupViewEvent.NavigateBack ->
                 finish()
-            is CreateGroupViewEvent.ShowGroupCreatedInformation ->
+            CreateGroupViewEvent.ShowGroupCreatedInformation ->
                 Toast.makeText(this, R.string.information_group_created, Toast.LENGTH_SHORT).show()
-            is CreateGroupViewEvent.ShowEmptySelectionError ->
+            CreateGroupViewEvent.ShowEmptySelectionError ->
                 Toast.makeText(this, R.string.error_empty_debtors_selection, Toast.LENGTH_SHORT).show()
-            is CreateGroupViewEvent.ShowInvalidGroupNameError ->
+            CreateGroupViewEvent.ShowInvalidGroupNameError ->
                 binding.inputName.error = getString(R.string.error_invalid_group_name)
-            is CreateGroupViewEvent.ShowCreateGroupError ->
+            CreateGroupViewEvent.ShowCreateGroupError ->
                 Toast.makeText(this, R.string.error_something_went_wrong, Toast.LENGTH_SHORT).show()
         }
     }

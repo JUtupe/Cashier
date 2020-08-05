@@ -44,9 +44,9 @@ class CreateDebtActivity : BaseActivity<ActivityCreateDebtBinding, CreateDebtVie
 
     private fun onViewEvent(event: CreateDebtViewEvent) {
         when(event) {
-            is CreateDebtViewEvent.NavigateUp ->
+            CreateDebtViewEvent.NavigateUp ->
                 finish()
-            is CreateDebtViewEvent.ShowDebtCreatedInformation ->
+            CreateDebtViewEvent.ShowDebtCreatedInformation ->
                 Toast.makeText(this, R.string.information_debt_created, Toast.LENGTH_SHORT).show()
         }
     }

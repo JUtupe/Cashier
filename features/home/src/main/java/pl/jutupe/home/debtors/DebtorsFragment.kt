@@ -2,9 +2,12 @@ package pl.jutupe.home.debtors
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
+import androidx.paging.LoadState
 import kotlinx.coroutines.flow.collectLatest
+import org.koin.android.ext.android.bind
 import org.koin.android.viewmodel.ext.android.viewModel
 import pl.jutupe.base.NavActions
 import pl.jutupe.base.view.BaseFragment
@@ -29,11 +32,15 @@ class DebtorsFragment : BaseFragment<FragmentDebtorsBinding, DebtorsViewModel>(
                 debtorAdapter.submitData(it)
             }
         }
+        debtorAdapter.addLoadStateListener { loadState ->
+            binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
+            binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+        }
     }
 
     override fun onInitDataBinding() {
         binding.viewModel = viewModel
-        binding.recyclerView.adapter = debtorAdapter
+        binding.list.adapter = debtorAdapter
     }
 
     private fun onViewEvent(event: DebtorsViewEvent) {

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import pl.jutupe.core.repository.entity.Debtor
-import pl.jutupe.home.createGroup.DebtorSelectionTracker
+import pl.jutupe.home.createGroup.LongSelectionTracker
 import pl.jutupe.home.databinding.ItemSelectableDebtorBinding
 import pl.jutupe.home.debtors.adapter.DebtorAdapter
 
@@ -12,7 +12,7 @@ class SelectableDebtorAdapter : PagingDataAdapter<Debtor, SelectableDebtorViewHo
     DebtorAdapter.DEBTOR_COMPARATOR
 ) {
 
-    lateinit var selectionTracker: DebtorSelectionTracker
+    lateinit var selectionTracker: LongSelectionTracker
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectableDebtorViewHolder {
         val inflater = LayoutInflater.from(parent.context)
