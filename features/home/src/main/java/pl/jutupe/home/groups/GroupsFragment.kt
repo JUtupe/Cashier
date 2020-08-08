@@ -14,6 +14,7 @@ import pl.jutupe.home.BR
 import pl.jutupe.home.R
 import pl.jutupe.home.databinding.FragmentGroupsBinding
 import pl.jutupe.home.groups.adapter.GroupAdapter
+import pl.jutupe.ui.adapter.RetryLoadAdapter
 
 class GroupsFragment : BaseFragment<FragmentGroupsBinding, GroupsViewModel>(
     layoutId = R.layout.fragment_groups
@@ -40,7 +41,9 @@ class GroupsFragment : BaseFragment<FragmentGroupsBinding, GroupsViewModel>(
 
     override fun onInitDataBinding() {
         binding.viewModel = viewModel
-        binding.list.adapter = groupAdapter
+        binding.list.adapter = groupAdapter.withLoadStateFooter(
+            RetryLoadAdapter { groupAdapter.retry() }
+        )
     }
 
     private fun onViewEvent(event: GroupsViewEvent) {

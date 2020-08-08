@@ -14,6 +14,7 @@ import pl.jutupe.base.view.BaseActivity
 import pl.jutupe.home.R
 import pl.jutupe.home.createGroup.adapter.SelectableDebtorAdapter
 import pl.jutupe.home.databinding.ActivityCreateGroupBinding
+import pl.jutupe.ui.adapter.RetryLoadAdapter
 
 class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroupViewModel>(
     layoutId = R.layout.activity_create_group
@@ -41,7 +42,9 @@ class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroup
 
     override fun onInitDataBinding() {
         binding.viewModel = viewModel
-        binding.list.adapter = debtorAdapter
+        binding.list.adapter = debtorAdapter.withLoadStateFooter(
+            RetryLoadAdapter { debtorAdapter.retry() }
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

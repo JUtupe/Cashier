@@ -14,6 +14,7 @@ import pl.jutupe.base.view.BaseFragment
 import pl.jutupe.home.R
 import pl.jutupe.home.databinding.FragmentDebtsBinding
 import pl.jutupe.home.debts.adapter.DebtAdapter
+import pl.jutupe.ui.adapter.RetryLoadAdapter
 
 class DebtsFragment : BaseFragment<FragmentDebtsBinding, DebtsViewModel>(
     layoutId = R.layout.fragment_debts
@@ -40,7 +41,9 @@ class DebtsFragment : BaseFragment<FragmentDebtsBinding, DebtsViewModel>(
 
     override fun onInitDataBinding() {
         binding.viewModel = viewModel
-        binding.list.adapter = debtAdapter
+        binding.list.adapter = debtAdapter.withLoadStateFooter(
+            RetryLoadAdapter { debtAdapter.retry() }
+        )
     }
 
     private fun onViewEvent(event: DebtsViewEvent) {

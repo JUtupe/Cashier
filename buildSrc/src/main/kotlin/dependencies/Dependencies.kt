@@ -18,21 +18,28 @@ private object Versions {
     const val navigation = "2.3.0"
     const val timber = "4.7.1"
     const val koin = "2.1.5"
+    const val core = "1.3.1"
     const val constraintLayout = "2.0.0-beta8"
     const val databindingCompiler = "4.0.1"
     const val paging = "3.0.0-alpha03"
     const val appCompat = "1.1.0"
     const val material = "1.1.0"
+    const val recyclerView = "1.1.0"
 }
 
 object Libraries {
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
 
     //android
+    const val core = "androidx.core:core-ktx:${Versions.core}"
+
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val material = "com.google.android.material:material:${Versions.material}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val databinding = "androidx.databinding:databinding-compiler:${Versions.databindingCompiler}"
+
+    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
+
     const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
 
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"

@@ -10,6 +10,7 @@ import pl.jutupe.base.SingleLiveData
 import pl.jutupe.core.repository.DebtorRepository
 import pl.jutupe.core.repository.GroupRepository
 import pl.jutupe.core.repository.entity.Group
+import pl.jutupe.home.delayed
 import timber.log.Timber
 
 class CreateGroupViewModel(
@@ -22,9 +23,10 @@ class CreateGroupViewModel(
     val events = SingleLiveData<CreateGroupViewEvent>()
     val debtors = Pager(
         config = PagingConfig(
-            pageSize = 20
+            pageSize = 20,
+            enablePlaceholders = false
         )
-    ) { debtorRepository.getAllPaging() }
+    ) { debtorRepository.getAllPaging().delayed() }
         .flow
 
     fun onCreateButtonClicked() {

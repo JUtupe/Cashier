@@ -4,22 +4,31 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import kotlinx.coroutines.delay
+import java.lang.RuntimeException
 
 //todo move to another module
 /**
  * PagingSource created to simulate network latency.
  *
- * default [delay] is set to one second.
+ * @param delay is milliseconds delay between [pagingSource] load call,
+ *        default [delay] is set to one second.
+ * @param enableErrors enable occasional errors to simulate network errors.
  */
 class SlowPagingSource<K : Any, V : Any>(
     private val pagingSource: PagingSource<K, V>,
-    private val delay: Long = 1000
+    private val delay: Long = 1000,
+    private val enableErrors: Boolean = false
 ) : PagingSource<K, V>() {
+
+    var error = true
 
     override suspend fun load(params: LoadParams<K>): LoadResult<K, V> {
         delay(delay)
 
-        return pagingSource.load(params)
+        error = error.not()
+
+        return if (enableErrors && error) LoadResult.Error(RuntimeException("example error message"))
+        else pagingSource.load(params)
     }
 
     override val jumpingSupported: Boolean
@@ -37,5 +46,8 @@ class SlowPagingSource<K : Any, V : Any>(
     }
 }
 
-fun <K : Any, V : Any> PagingSource<K,V>.delayed(delay: Long = 1000) =
-    SlowPagingSource(this, delay)
+fun <K : Any, V : Any> PagingSource<K,V>.delayed(
+    delay: Long = 1000,
+    enableErrors: Boolean = true
+) =
+    SlowPagingSource(this, delay, enableErrors)

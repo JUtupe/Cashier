@@ -7,6 +7,7 @@ plugins {
 
 dependencies {
     implementation(project(":commons:base"))
+    implementation(project(":commons:ui"))
     implementation(project(":core"))
 
     implementation(Libraries.appCompat)

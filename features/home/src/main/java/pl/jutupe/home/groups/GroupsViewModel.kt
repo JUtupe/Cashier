@@ -17,7 +17,8 @@ class GroupsViewModel(
     val groups =
         Pager(
             config = PagingConfig(
-                pageSize = 20
+                pageSize = 20,
+                enablePlaceholders = false
             )
         ) { groupRepository.getAllPaging().delayed() }
             .flow

@@ -17,7 +17,8 @@ class DebtsViewModel(
     val debts =
         Pager(
             config = PagingConfig(
-                pageSize = 20
+                pageSize = 20,
+                enablePlaceholders = false
             )
         ) { debtRepository.getAllPaging().delayed() }
             .flow

@@ -8,6 +8,7 @@ import androidx.paging.cachedIn
 import pl.jutupe.base.SingleLiveData
 import pl.jutupe.core.repository.DebtorRepository
 import pl.jutupe.home.delayed
+import java.lang.Exception
 
 class DebtorsViewModel(
     private val debtorRepository: DebtorRepository
@@ -17,7 +18,8 @@ class DebtorsViewModel(
     val debtors =
         Pager(
             config = PagingConfig(
-                pageSize = 20
+                pageSize = 20,
+                enablePlaceholders = false
             )
         ) { debtorRepository.getAllPaging().delayed() }
             .flow

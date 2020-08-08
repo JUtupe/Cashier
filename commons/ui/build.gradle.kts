@@ -7,7 +7,11 @@ plugins {
 }
 
 dependencies {
-    implementation(Libraries.recyclerView)
-
     kapt(Libraries.databinding)
+
+    implementation(Libraries.core)
+
+    implementation(Libraries.constraintLayout)
+    implementation(Libraries.recyclerView)
+    implementation(Libraries.paging)
 }
