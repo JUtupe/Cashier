@@ -20,7 +20,7 @@ class SlowPagingSource<K : Any, V : Any>(
     private val enableErrors: Boolean = false
 ) : PagingSource<K, V>() {
 
-    var error = true
+    var error = false
 
     override suspend fun load(params: LoadParams<K>): LoadResult<K, V> {
         delay(delay)

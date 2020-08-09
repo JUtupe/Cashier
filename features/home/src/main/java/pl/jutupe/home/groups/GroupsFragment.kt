@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.collectLatest
 import org.koin.android.viewmodel.ext.android.viewModel
 import pl.jutupe.base.NavActions
 import pl.jutupe.base.view.BaseFragment
-import pl.jutupe.home.BR
 import pl.jutupe.home.R
 import pl.jutupe.home.databinding.FragmentGroupsBinding
 import pl.jutupe.home.groups.adapter.GroupAdapter
@@ -36,6 +35,7 @@ class GroupsFragment : BaseFragment<FragmentGroupsBinding, GroupsViewModel>(
         groupAdapter.addLoadStateListener { loadState ->
             binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
             binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+            binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
         }
     }
 
@@ -44,6 +44,7 @@ class GroupsFragment : BaseFragment<FragmentGroupsBinding, GroupsViewModel>(
         binding.list.adapter = groupAdapter.withLoadStateFooter(
             RetryLoadAdapter { groupAdapter.retry() }
         )
+        binding.retryButton.setOnClickListener { groupAdapter.retry() }
     }
 
     private fun onViewEvent(event: GroupsViewEvent) {

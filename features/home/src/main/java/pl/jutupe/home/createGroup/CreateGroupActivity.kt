@@ -37,6 +37,7 @@ class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroup
         debtorAdapter.addLoadStateListener { loadState ->
             binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
             binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+            binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
         }
     }
 
@@ -45,6 +46,7 @@ class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroup
         binding.list.adapter = debtorAdapter.withLoadStateFooter(
             RetryLoadAdapter { debtorAdapter.retry() }
         )
+        binding.retryButton.setOnClickListener { debtorAdapter.retry() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

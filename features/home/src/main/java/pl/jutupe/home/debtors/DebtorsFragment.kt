@@ -7,7 +7,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.paging.LoadState
 import kotlinx.coroutines.flow.collectLatest
-import org.koin.android.ext.android.bind
 import org.koin.android.viewmodel.ext.android.viewModel
 import pl.jutupe.base.NavActions
 import pl.jutupe.base.view.BaseFragment
@@ -36,6 +35,7 @@ class DebtorsFragment : BaseFragment<FragmentDebtorsBinding, DebtorsViewModel>(
         debtorAdapter.addLoadStateListener { loadState ->
             binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
             binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+            binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
         }
     }
 
@@ -44,6 +44,7 @@ class DebtorsFragment : BaseFragment<FragmentDebtorsBinding, DebtorsViewModel>(
         binding.list.adapter = debtorAdapter.withLoadStateFooter(
             RetryLoadAdapter { debtorAdapter.retry() }
         )
+        binding.retryButton.setOnClickListener { debtorAdapter.retry() }
     }
 
     private fun onViewEvent(event: DebtorsViewEvent) {
