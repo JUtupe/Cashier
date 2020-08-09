@@ -15,10 +15,7 @@ class RetryLoadViewHolder(
     }
 
     fun bind(loadState: LoadState) {
-        if (loadState is LoadState.Error) {
-            binding.errorMessage = loadState.error.localizedMessage
-        }
         binding.progressBar.isVisible = loadState is LoadState.Loading
-        binding.errorView.isVisible = loadState !is LoadState.Loading
+        binding.retryButton.isVisible = loadState !is LoadState.Loading
     }
 }
