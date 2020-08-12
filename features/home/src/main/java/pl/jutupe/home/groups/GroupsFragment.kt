@@ -32,10 +32,17 @@ class GroupsFragment : BaseFragment<FragmentGroupsBinding, GroupsViewModel>(
                 groupAdapter.submitData(it)
             }
         }
-        groupAdapter.addLoadStateListener { loadState ->
-            binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
-            binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
-            binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+
+        lifecycleScope.launchWhenCreated {
+            groupAdapter.loadStateFlow.collectLatest { loadState ->
+                binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
+                binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+                binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+
+                binding.emptyView.isVisible =
+                    loadState.append.endOfPaginationReached &&
+                            groupAdapter.itemCount == 0
+            }
         }
     }
 

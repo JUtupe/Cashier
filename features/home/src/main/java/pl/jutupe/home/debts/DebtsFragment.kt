@@ -32,10 +32,17 @@ class DebtsFragment : BaseFragment<FragmentDebtsBinding, DebtsViewModel>(
                 debtAdapter.submitData(it)
             }
         }
-        debtAdapter.addLoadStateListener { loadState ->
-            binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
-            binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
-            binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+
+        lifecycleScope.launchWhenCreated {
+            debtAdapter.loadStateFlow.collectLatest { loadState ->
+                binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
+                binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+                binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+
+                binding.emptyView.isVisible =
+                    loadState.append.endOfPaginationReached &&
+                            debtAdapter.itemCount == 0
+            }
         }
     }
 

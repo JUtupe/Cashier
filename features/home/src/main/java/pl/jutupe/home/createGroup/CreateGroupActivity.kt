@@ -34,10 +34,17 @@ class CreateGroupActivity : BaseActivity<ActivityCreateGroupBinding, CreateGroup
                 debtorAdapter.submitData(it)
             }
         }
-        debtorAdapter.addLoadStateListener { loadState ->
-            binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
-            binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
-            binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+
+        lifecycleScope.launchWhenCreated {
+            debtorAdapter.loadStateFlow.collectLatest { loadState ->
+                binding.list.isVisible = loadState.source.refresh is LoadState.NotLoading
+                binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+                binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+
+                binding.emptyView.isVisible =
+                    loadState.append.endOfPaginationReached &&
+                            debtorAdapter.itemCount == 0
+            }
         }
     }
 

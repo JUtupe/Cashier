@@ -21,7 +21,7 @@ private object Versions {
     const val core = "1.3.1"
     const val constraintLayout = "2.0.0-beta8"
     const val databindingCompiler = "4.0.1"
-    const val paging = "3.0.0-alpha03"
+    const val paging = "3.0.0-alpha04"
     const val appCompat = "1.1.0"
     const val material = "1.1.0"
     const val recyclerView = "1.1.0"

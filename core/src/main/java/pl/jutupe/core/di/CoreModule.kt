@@ -24,9 +24,9 @@ val coreModule = module {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     GlobalScope.launch {
 
-                        get<DebtorDao>().insertAll(
+                        /*get<DebtorDao>().insertAll(
                             (1..200).map { it.toString() }.map { Debtor(0, it, it) }
-                        )
+                        )*/
 
                         get<GroupDao>().insertAll(
                             (1..200).map { it.toString() }.map { Group(0, it) }
